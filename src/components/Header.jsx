@@ -1,3 +1,5 @@
+import Clock from './Clock'
+
 const Header = () => {
   return (
     <header className='flex justify-between w-full items-center'>
@@ -7,6 +9,7 @@ const Header = () => {
           3
         </span>
       </h2>
+      <Clock />
       <a className='text-gray-500 text-sm'>Mark all as read</a>
     </header>
   )
