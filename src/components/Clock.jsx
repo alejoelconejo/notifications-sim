@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const Clock = () => {
-  const [clock, setClock] = useState(0)
+  const [clock, setClock] = useState('00:00:00')
 
   const date = new Date()
   let hh = date.getHours()
@@ -20,7 +20,7 @@ const Clock = () => {
     }, 1000)
   }, [clock])
 
-  return <p className='text-gray-600'>{clock}</p>
+  return <p className='text-gray-600 flex-1 text-center'>{clock}</p>
 }
 
 export default Clock
