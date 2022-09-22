@@ -3,13 +3,13 @@ import Notification from './Notification'
 const Notifications = ({ users }) => {
   return (
     <main className='flex flex-col w-full gap-3 my-6 overflow-y-scroll'>
-      {users.map((user) => {
+      {users.map(({ id, firstName, lastName, image }) => {
         return (
           <Notification
-            key={user.id}
-            firstName={user.firstName}
-            lastName={user.lastName}
-            avatar={user.image}
+            key={id}
+            firstName={firstName}
+            lastName={lastName}
+            avatar={image}
           />
         )
       })}
