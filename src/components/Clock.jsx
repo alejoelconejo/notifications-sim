@@ -20,7 +20,11 @@ const Clock = () => {
     }, 1000)
   }, [clock])
 
-  return <p className='text-gray-600 flex-1 text-center'>{clock}</p>
+  return (
+    <p className='text-gray-600 justify-self-center flex items-center text-xl'>
+      {clock}
+    </p>
+  )
 }
 
 export default Clock
