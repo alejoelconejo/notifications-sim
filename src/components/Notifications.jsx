@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react'
 import Notification from './Notification'
 
 const Notifications = ({ notes, setNotes }) => {
+  const [counterNotes, setCounterNotes] = useState(0)
+
   const handleClickReadAll = () => {
     setNotes((prevNotes) =>
       prevNotes.map((note) => ({
@@ -23,13 +26,19 @@ const Notifications = ({ notes, setNotes }) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
   }
 
+  useEffect(() => {
+    setCounterNotes(() =>
+      notes.reduce((acc, { isRead }) => (!isRead ? acc + 1 : acc), 0)
+    )
+  }, [notes])
+
   return (
     <main className='overflow-hidden w-full'>
       <header className='flex justify-between w-full mb-6'>
         <h2 className='font-extrabold text-xl flex items-center justify-self-start'>
           Notifications
           <span className='text-white text-lg rounded-md bg-blue-900 px-3 mx-2'>
-            3
+            {counterNotes}
           </span>
         </h2>
         <a
