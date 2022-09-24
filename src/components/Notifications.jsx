@@ -1,7 +1,7 @@
 import Notification from './Notification'
 
 const Notifications = ({ notes, setNotes }) => {
-  const handleClick = () => {
+  const handleClickReadAll = () => {
     setNotes((prevNotes) =>
       prevNotes.map((note) => ({
         ...note,
@@ -19,6 +19,10 @@ const Notifications = ({ notes, setNotes }) => {
       )
   }
 
+  const handleClickDelete = (id) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
+  }
+
   return (
     <main className='overflow-hidden w-full'>
       <header className='flex justify-between w-full mb-6'>
@@ -29,7 +33,7 @@ const Notifications = ({ notes, setNotes }) => {
           </span>
         </h2>
         <a
-          onClick={handleClick}
+          onClick={handleClickReadAll}
           className='text-gray-500 text-sm justify-self-end flex items-center cursor-pointer'
         >
           Mark all as read
@@ -46,7 +50,8 @@ const Notifications = ({ notes, setNotes }) => {
               avatar={image}
               action={action}
               isRead={isRead}
-              onClick={handleClickRead}
+              handleClickRead={handleClickRead}
+              handleClickDelete={handleClickDelete}
             />
           )
         })}
