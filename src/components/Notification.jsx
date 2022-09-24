@@ -1,9 +1,18 @@
-const Notification = ({ firstName, avatar, lastName, action, isRead }) => {
+const Notification = ({
+  firstName,
+  avatar,
+  lastName,
+  action,
+  isRead,
+  onClick,
+  id,
+}) => {
   return (
     <article
       className={`w-full ${
         isRead ? 'bg-white' : 'bg-blue-50'
       }  rounded-lg p-4 flex gap-4`}
+      onClick={() => onClick(id, isRead)}
     >
       <img
         className='h-12 bg-white rounded-full border-2'

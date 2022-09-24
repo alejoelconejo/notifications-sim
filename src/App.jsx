@@ -20,11 +20,16 @@ const App = () => {
 
   useEffect(() => {
     setNotes(
-      users.map((user) => ({ ...user, isRead: false, action: action() }))
+      users.map(({ firstName, lastName, id, image }) => ({
+        id,
+        firstName,
+        lastName,
+        image,
+        isRead: false,
+        action: action(),
+      }))
     )
   }, [users])
-
-  console.log(notes)
 
   return (
     <div className='flex flex-col justify-start items-center h-[90vh] max-w-sm md:max-w-3xl mx-auto px-4 py-8 border-2 rounded-lg bg-white'>

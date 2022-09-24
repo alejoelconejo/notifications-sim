@@ -5,9 +5,18 @@ const Notifications = ({ notes, setNotes }) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) => ({
         ...note,
-        isRead: !note.isRead,
+        isRead: true,
       }))
     )
+  }
+
+  const handleClickRead = (id, isRead) => {
+    !isRead &&
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note.id === id ? { ...note, isRead: true } : note
+        )
+      )
   }
 
   return (
@@ -31,11 +40,13 @@ const Notifications = ({ notes, setNotes }) => {
           return (
             <Notification
               key={id}
+              id={id}
               firstName={firstName}
               lastName={lastName}
               avatar={image}
               action={action}
               isRead={isRead}
+              onClick={handleClickRead}
             />
           )
         })}
