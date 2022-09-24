@@ -3,9 +3,11 @@ import Header from './components/Header'
 import Notifications from './components/Notifications'
 import fetchApi from './services/fetchApi'
 import Spinner from './components/Spinner'
+import actions from './data/actions.json'
 
 const App = () => {
   const [users, setUsers] = useState([])
+  const [notes, setNotes] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -14,12 +16,24 @@ const App = () => {
       .then(() => setIsLoading(false))
   }, [])
 
-  console.log(users)
+  const action = () => actions[Math.floor(Math.random() * actions.length)]
+
+  useEffect(() => {
+    setNotes(
+      users.map((user) => ({ ...user, isRead: false, action: action() }))
+    )
+  }, [users])
+
+  console.log(notes)
 
   return (
     <div className='flex flex-col justify-start items-center h-[90vh] max-w-sm md:max-w-3xl mx-auto px-4 py-8 border-2 rounded-lg bg-white'>
       <Header />
-      {isLoading ? <Spinner /> : <Notifications users={users} />}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Notifications notes={notes} setNotes={setNotes} />
+      )}
     </div>
   )
 }

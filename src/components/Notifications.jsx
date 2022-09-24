@@ -1,21 +1,45 @@
 import Notification from './Notification'
-import actions from '../data/actions'
 
-const Notifications = ({ users }) => {
+const Notifications = ({ notes, setNotes }) => {
+  const handleClick = () => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) => ({
+        ...note,
+        isRead: !note.isRead,
+      }))
+    )
+  }
+
   return (
-    <main className='flex flex-col w-full gap-3 mb-6 overflow-y-scroll'>
-      {users.map(({ id, firstName, lastName, image }) => {
-        const action = actions[Math.floor(Math.random() * actions.length)]
-        return (
-          <Notification
-            key={id}
-            firstName={firstName}
-            lastName={lastName}
-            avatar={image}
-            action={action}
-          />
-        )
-      })}
+    <main className='overflow-hidden w-full'>
+      <header className='flex justify-between w-full mb-6'>
+        <h2 className='font-extrabold text-xl flex items-center justify-self-start'>
+          Notifications
+          <span className='text-white text-lg rounded-md bg-blue-900 px-3 mx-2'>
+            3
+          </span>
+        </h2>
+        <a
+          onClick={handleClick}
+          className='text-gray-500 text-sm justify-self-end flex items-center cursor-pointer'
+        >
+          Mark all as read
+        </a>
+      </header>
+      <section className='flex flex-col w-full h-full gap-3 mb-6 overflow-y-scroll'>
+        {notes.map(({ id, firstName, lastName, image, isRead, action }) => {
+          return (
+            <Notification
+              key={id}
+              firstName={firstName}
+              lastName={lastName}
+              avatar={image}
+              action={action}
+              isRead={isRead}
+            />
+          )
+        })}
+      </section>
     </main>
   )
 }

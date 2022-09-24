@@ -1,8 +1,12 @@
-const Notification = ({ firstName, avatar, lastName, action }) => {
+const Notification = ({ firstName, avatar, lastName, action, isRead }) => {
   return (
-    <article className='w-full bg-blue-50 rounded-lg p-4 flex gap-4'>
+    <article
+      className={`w-full ${
+        isRead ? 'bg-white' : 'bg-blue-50'
+      }  rounded-lg p-4 flex gap-4`}
+    >
       <img
-        className='h-12 bg-white rounded-full'
+        className='h-12 bg-white rounded-full border-2'
         src={avatar}
         loading='lazy'
       ></img>
