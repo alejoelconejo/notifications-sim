@@ -7,7 +7,7 @@ import actions from './data/actions.json'
 
 const App = () => {
   const [users, setUsers] = useState([])
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState([]) // TODO: save notes state to localStorage
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

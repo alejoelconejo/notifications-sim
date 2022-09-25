@@ -33,7 +33,7 @@ const Notification = ({
       </div>
 
       <button
-        className='hidden group-hover:block p text-red-600'
+        className='hidden group-hover:block text-red-600'
         onClick={() => handleClickDelete(id)}
       >
         X
