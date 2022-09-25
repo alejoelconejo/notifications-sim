@@ -37,6 +37,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
       lastName: randomUser.firstName,
       image: randomUser.image,
       action: action(),
+      isRead: false,
     }
     setNotes((prevNotes) => [newNote, ...prevNotes])
   }
