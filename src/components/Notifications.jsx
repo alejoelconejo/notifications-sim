@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import Notification from './Notification'
+import { ReactComponent as Reload } from '../assets/images/reload.svg'
+import { nanoid } from 'nanoid'
+import actions from '../data/actions.json'
 
-const Notifications = ({ notes, setNotes }) => {
+const Notifications = ({ notes, setNotes, users, action }) => {
   const [counterNotes, setCounterNotes] = useState(0)
 
   const handleClickReadAll = () => {
@@ -26,6 +29,18 @@ const Notifications = ({ notes, setNotes }) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
   }
 
+  const handleClickAdd = () => {
+    const randomUser = users[Math.floor(Math.random() * actions.length)]
+    const newNote = {
+      id: nanoid(),
+      firstName: randomUser.firstName,
+      lastName: randomUser.firstName,
+      image: randomUser.image,
+      action: action(),
+    }
+    setNotes((prevNotes) => [newNote, ...prevNotes])
+  }
+
   useEffect(() => {
     setCounterNotes(() =>
       notes.reduce((acc, { isRead }) => (!isRead ? acc + 1 : acc), 0)
@@ -41,6 +56,9 @@ const Notifications = ({ notes, setNotes }) => {
             {counterNotes}
           </span>
         </h2>
+        <button onClick={handleClickAdd}>
+          <Reload />
+        </button>
         <a
           onClick={handleClickReadAll}
           className='text-gray-500 text-sm justify-self-end flex items-center cursor-pointer'

@@ -37,7 +37,12 @@ const App = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <Notifications notes={notes} setNotes={setNotes} />
+        <Notifications
+          notes={notes}
+          setNotes={setNotes}
+          users={users}
+          action={action}
+        />
       )}
     </div>
   )
