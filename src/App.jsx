@@ -4,6 +4,7 @@ import Notifications from './components/Notifications'
 import fetchApi from './services/fetchApi'
 import Spinner from './components/Spinner'
 import actions from './data/actions.json'
+import { nanoid } from 'nanoid'
 
 const App = () => {
   const [users, setUsers] = useState([])
@@ -21,7 +22,7 @@ const App = () => {
   useEffect(() => {
     setNotes(
       users.map(({ firstName, lastName, id, image }) => ({
-        id,
+        id: nanoid(),
         firstName,
         lastName,
         image,
