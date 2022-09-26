@@ -42,6 +42,7 @@ const App = () => {
   return (
     <div className='flex flex-col justify-start items-center h-[90vh] max-w-sm md:max-w-3xl mx-auto px-4 py-8 border-2 rounded-lg bg-white'>
       <Header />
+
       {isLoading ? (
         <Spinner />
       ) : (
