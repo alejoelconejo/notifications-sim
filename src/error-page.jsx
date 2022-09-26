@@ -2,7 +2,6 @@ import { useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
   const error = useRouteError()
-  console.error(error)
 
   return (
     <div className='mx-auto grid gap-6 place-content-center text-center w-fit p-8 border-2 rounded-lg bg-white'>
