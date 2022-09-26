@@ -6,10 +6,18 @@ import Spinner from './components/Spinner'
 import actions from './data/actions.json'
 import { nanoid } from 'nanoid'
 
+const action = () => actions[Math.floor(Math.random() * actions.length)]
+
 const App = () => {
   const [users, setUsers] = useState([])
-  const [notes, setNotes] = useState([]) // TODO: save notes state to localStorage
+  const [notes, setNotes] = useState(
+    () => JSON.parse(localStorage.getItem('notes')) || []
+  )
   const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   useEffect(() => {
     fetchApi()
@@ -17,19 +25,18 @@ const App = () => {
       .then(() => setIsLoading(false))
   }, [])
 
-  const action = () => actions[Math.floor(Math.random() * actions.length)]
-
   useEffect(() => {
-    setNotes(
-      users.map(({ firstName, lastName, id, image }) => ({
-        id: nanoid(),
-        firstName,
-        lastName,
-        image,
-        isRead: false,
-        action: action(),
-      }))
-    )
+    !notes.length &&
+      setNotes(
+        users.map(({ firstName, lastName, image }) => ({
+          id: nanoid(),
+          firstName,
+          lastName,
+          image,
+          isRead: false,
+          action: action(),
+        }))
+      )
   }, [users])
 
   return (
