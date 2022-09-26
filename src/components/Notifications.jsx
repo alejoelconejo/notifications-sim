@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Notification from './Notification'
 import { ReactComponent as Reload } from '../assets/images/reload.svg'
 import { nanoid } from 'nanoid'
-import actions from '../data/actions.json'
 
 const Notifications = ({ notes, setNotes, users, action }) => {
   const [counterNotes, setCounterNotes] = useState(0)
@@ -30,7 +29,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
   }
 
   const handleClickAdd = () => {
-    const randomUser = users[Math.floor(Math.random() * actions.length)]
+    const randomUser = users[Math.floor(Math.random() * users.length)]
     const newNote = {
       id: nanoid(),
       firstName: randomUser.firstName,
