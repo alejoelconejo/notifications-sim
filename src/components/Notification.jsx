@@ -1,8 +1,9 @@
 const Notification = ({
   id,
   firstName,
-  avatar,
   lastName,
+  username,
+  avatar,
   action,
   isRead,
   handleClickRead,
@@ -21,17 +22,16 @@ const Notification = ({
           src={avatar}
           loading='lazy'
         ></img>
-        <div className='text-sm'>
+        <div className='text-sm leading-6'>
           <p className=' text-gray-500'>
             <span className='text-slate-800 font-extrabold pr-1'>
               {firstName} {lastName}
             </span>
             {action}
           </p>
-          <p className='text-gray-400'>5m ago</p>
+          <p className='text-gray-400'>@{username} · 5m ago</p>
         </div>
       </div>
-
       <button
         className='hidden group-hover:block text-red-600'
         onClick={() => handleClickDelete(id)}

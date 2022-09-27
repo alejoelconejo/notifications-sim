@@ -28,10 +28,11 @@ const App = () => {
   useEffect(() => {
     !notes.length &&
       setNotes(
-        users.map(({ firstName, lastName, image }) => ({
+        users.map(({ firstName, lastName, username, image }) => ({
           id: nanoid(),
           firstName,
           lastName,
+          username,
           image,
           isRead: false,
           action: action(),

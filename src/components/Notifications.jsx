@@ -34,6 +34,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
       id: nanoid(),
       firstName: randomUser.firstName,
       lastName: randomUser.lastName,
+      username: randomUser.username,
       image: randomUser.image,
       action: action(),
       isRead: false,
@@ -67,21 +68,24 @@ const Notifications = ({ notes, setNotes, users, action }) => {
         </a>
       </header>
       <section className='flex flex-col w-full h-full gap-3 mb-6 overflow-y-scroll'>
-        {notes.map(({ id, firstName, lastName, image, isRead, action }) => {
-          return (
-            <Notification
-              key={id}
-              id={id}
-              firstName={firstName}
-              lastName={lastName}
-              avatar={image}
-              action={action}
-              isRead={isRead}
-              handleClickRead={handleClickRead}
-              handleClickDelete={handleClickDelete}
-            />
-          )
-        })}
+        {notes.map(
+          ({ id, firstName, lastName, username, image, isRead, action }) => {
+            return (
+              <Notification
+                key={id}
+                id={id}
+                firstName={firstName}
+                lastName={lastName}
+                username={username}
+                avatar={image}
+                action={action}
+                isRead={isRead}
+                handleClickRead={handleClickRead}
+                handleClickDelete={handleClickDelete}
+              />
+            )
+          }
+        )}
       </section>
     </main>
   )
