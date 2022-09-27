@@ -33,7 +33,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
     const newNote = {
       id: nanoid(),
       firstName: randomUser.firstName,
-      lastName: randomUser.firstName,
+      lastName: randomUser.lastName,
       image: randomUser.image,
       action: action(),
       isRead: false,
