@@ -6,6 +6,8 @@ import Spinner from './components/Spinner'
 import actions from './data/actions.json'
 import { nanoid } from 'nanoid'
 
+const INITIAL_NOTES = 10
+
 const action = () => actions[Math.floor(Math.random() * actions.length)]
 
 const App = () => {
@@ -28,15 +30,17 @@ const App = () => {
   useEffect(() => {
     !notes.length &&
       setNotes(
-        users.map(({ firstName, lastName, username, image }) => ({
-          id: nanoid(),
-          firstName,
-          lastName,
-          username,
-          image,
-          isRead: false,
-          action: action(),
-        }))
+        users
+          .map(({ firstName, lastName, username, image }) => ({
+            id: nanoid(),
+            firstName,
+            lastName,
+            username,
+            image,
+            isRead: false,
+            action: action(),
+          }))
+          .slice(0, INITIAL_NOTES)
       )
   }, [users])
 
