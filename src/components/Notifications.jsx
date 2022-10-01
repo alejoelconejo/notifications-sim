@@ -32,6 +32,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
     const randomUser = users[Math.floor(Math.random() * users.length)]
     const newNote = {
       id: nanoid(),
+      userId: randomUser.id,
       firstName: randomUser.firstName,
       lastName: randomUser.lastName,
       username: randomUser.username,
@@ -69,11 +70,21 @@ const Notifications = ({ notes, setNotes, users, action }) => {
       </header>
       <section className='flex flex-col w-full h-full gap-3 mb-6 overflow-y-scroll'>
         {notes.map(
-          ({ id, firstName, lastName, username, image, isRead, action }) => {
+          ({
+            id,
+            userId,
+            firstName,
+            lastName,
+            username,
+            image,
+            isRead,
+            action,
+          }) => {
             return (
               <Notification
                 key={id}
                 id={id}
+                userId={userId}
                 firstName={firstName}
                 lastName={lastName}
                 username={username}

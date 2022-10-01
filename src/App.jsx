@@ -5,6 +5,8 @@ import fetchApi from './services/fetchApi'
 import Spinner from './components/Spinner'
 import actions from './data/actions.json'
 import { nanoid } from 'nanoid'
+import { Route, Switch } from 'wouter'
+import Profile from './components/Profile'
 
 const INITIAL_NOTES = 10
 
@@ -31,8 +33,9 @@ const App = () => {
     !notes.length &&
       setNotes(
         users
-          .map(({ firstName, lastName, username, image }) => ({
+          .map(({ firstName, lastName, username, image, id }) => ({
             id: nanoid(),
+            userId: id,
             firstName,
             lastName,
             username,
@@ -47,17 +50,23 @@ const App = () => {
   return (
     <div className='flex flex-col justify-start items-center h-[90vh] max-w-sm md:max-w-3xl mx-auto px-4 py-8 border-2 rounded-lg bg-white'>
       <Header />
-
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <Notifications
-          notes={notes}
-          setNotes={setNotes}
-          users={users}
-          action={action}
-        />
-      )}
+      <Switch>
+        <Route path='/'>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <Notifications
+              notes={notes}
+              setNotes={setNotes}
+              users={users}
+              action={action}
+            />
+          )}
+        </Route>
+        <Route path='/profile/:id'>
+          {(params) => <Profile users={users} params={params} />}
+        </Route>
+      </Switch>
     </div>
   )
 }
