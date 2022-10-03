@@ -1,4 +1,5 @@
 import { Link } from 'wouter'
+import { ReactComponent as Delete } from '../assets/images/delete.svg'
 
 const Notification = ({
   id,
@@ -19,7 +20,7 @@ const Notification = ({
       }  rounded-lg flex justify-between p-4`}
       onClick={() => handleClickRead(id, isRead)}
     >
-      <div className='flex gap-4'>
+      <div className='flex gap-4 w-11/12'>
         <img
           className='h-12 bg-white rounded-full border-2'
           src={avatar}
@@ -42,10 +43,10 @@ const Notification = ({
         </div>
       </div>
       <button
-        className='hidden group-hover:block text-red-600'
+        className='hidden group-hover:block'
         onClick={() => handleClickDelete(id)}
       >
-        X
+        <Delete className='w-4 h-4 text-red-600' />
       </button>
     </article>
   )

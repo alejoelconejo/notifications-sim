@@ -68,7 +68,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
           Mark all as read
         </a>
       </header>
-      <section className='flex flex-col w-full h-full gap-3 mb-6 overflow-y-scroll'>
+      <section className='flex flex-col w-full h-full gap-3 overflow-y-scroll'>
         {notes.map(
           ({
             id,
