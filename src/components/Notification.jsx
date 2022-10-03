@@ -26,14 +26,17 @@ const Notification = ({
           loading='lazy'
         ></img>
         <div className='text-sm leading-6'>
-          <p className=' text-gray-500'>
+          <p className='text-gray-500 align-middle'>
             <Link
               href={`/profile/${userId}`}
               className='text-slate-800 font-extrabold pr-1'
             >
               {firstName} {lastName}
             </Link>
-            {action}
+            <span>{action}</span>
+            {!isRead && (
+              <span className='w-2 h-2 bg-red-600 rounded-full ml-2 inline-block' />
+            )}
           </p>
           <p className='text-gray-400'>@{username} · 5m ago</p>
         </div>
