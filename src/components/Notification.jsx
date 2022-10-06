@@ -9,6 +9,7 @@ const Notification = ({
   username,
   avatar,
   action,
+  time,
   isRead,
   handleClickRead,
   handleClickDelete,
@@ -17,7 +18,7 @@ const Notification = ({
     <article
       className={`group w-full ${
         isRead ? 'bg-white' : 'bg-blue-50'
-      }  rounded-lg flex justify-between p-4`}
+      }  border-2 border-gray-100 rounded-lg flex justify-between p-4`}
       onClick={() => handleClickRead(id, isRead)}
     >
       <div className='flex gap-4 w-11/12'>
@@ -39,7 +40,9 @@ const Notification = ({
               <span className='w-2 h-2 bg-red-600 rounded-full ml-2 inline-block' />
             )}
           </p>
-          <p className='text-gray-400'>@{username} · 5m ago</p>
+          <p className='text-gray-400'>
+            @{username} · {time}m ago
+          </p>
         </div>
       </div>
       <button

@@ -39,6 +39,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
       image: randomUser.image,
       action: action(),
       isRead: false,
+      time: 1,
     }
     setNotes((prevNotes) => [newNote, ...prevNotes])
   }
@@ -79,6 +80,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
             image,
             isRead,
             action,
+            time,
           }) => {
             return (
               <Notification
@@ -91,6 +93,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
                 avatar={image}
                 action={action}
                 isRead={isRead}
+                time={time}
                 handleClickRead={handleClickRead}
                 handleClickDelete={handleClickDelete}
               />

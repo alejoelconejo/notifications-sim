@@ -12,6 +12,8 @@ const INITIAL_NOTES = 10
 
 const action = () => actions[Math.floor(Math.random() * actions.length)]
 
+export const timeNow = Date.now()
+
 const App = () => {
   const [users, setUsers] = useState([])
   const [notes, setNotes] = useState(
@@ -42,6 +44,7 @@ const App = () => {
             image,
             isRead: false,
             action: action(),
+            time: 5,
           }))
           .slice(0, INITIAL_NOTES)
       )
