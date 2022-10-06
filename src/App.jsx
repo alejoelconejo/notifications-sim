@@ -12,8 +12,6 @@ const INITIAL_NOTES = 10
 
 const action = () => actions[Math.floor(Math.random() * actions.length)]
 
-export const timeNow = Date.now()
-
 const App = () => {
   const [users, setUsers] = useState([])
   const [notes, setNotes] = useState(
