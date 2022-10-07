@@ -21,7 +21,7 @@ const Notification = ({
       }  border-2 border-gray-100 snap-end rounded-lg flex justify-between p-4`}
       onClick={() => handleClickRead(id, isRead)}
     >
-      <div className='flex gap-4 w-11/12'>
+      <div className='flex gap-4'>
         <img
           className='h-12 bg-white rounded-full border-2'
           src={avatar}
@@ -46,7 +46,7 @@ const Notification = ({
         </div>
       </div>
       <button
-        className='hidden group-hover:block'
+        className='invisible group-hover:visible'
         onClick={() => handleClickDelete(id)}
       >
         <Delete className='w-4 h-4 text-red-600' />
