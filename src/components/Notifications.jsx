@@ -51,7 +51,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
   }, [notes])
 
   return (
-    <main className='overflow-hidden w-full'>
+    <main className='overflow-hidden w-full flex flex-col'>
       <header className='flex justify-between w-full mb-6'>
         <h2 className='font-extrabold text-xl flex items-center justify-self-start'>
           Notifications
@@ -69,7 +69,7 @@ const Notifications = ({ notes, setNotes, users, action }) => {
           Mark all as read
         </a>
       </header>
-      <section className='flex flex-col w-full h-full gap-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-100'>
+      <section className='flex flex-col w-full h-full snap-y pr-2 gap-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-100'>
         {notes.map(
           ({
             id,

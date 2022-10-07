@@ -18,7 +18,7 @@ const Notification = ({
     <article
       className={`group w-full ${
         isRead ? 'bg-white' : 'bg-blue-50'
-      }  border-2 border-gray-100 rounded-lg flex justify-between p-4`}
+      }  border-2 border-gray-100 snap-end rounded-lg flex justify-between p-4`}
       onClick={() => handleClickRead(id, isRead)}
     >
       <div className='flex gap-4 w-11/12'>
