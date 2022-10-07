@@ -24,9 +24,10 @@ const App = () => {
   }, [notes])
 
   useEffect(() => {
-    fetchApi()
-      .then((data) => setUsers(data.users))
-      .then(() => setIsLoading(false))
+    fetchApi().then((data) => {
+      setUsers(data.users)
+      setIsLoading(false)
+    })
   }, [])
 
   useEffect(() => {
